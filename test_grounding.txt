@@ -1,0 +1,4 @@
+Someone: Maybe we should use PostgreSQL.
+Harinath: Okay, let's use PostgreSQL.
+Prabu: I will finish the API by Friday.
+Manikanta: Someone should prepare the project report.

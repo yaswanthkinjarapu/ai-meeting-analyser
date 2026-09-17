@@ -1,0 +1,5 @@
+Harinath: We need to complete the API.
+Prabu: I will finish the API by Friday.
+Manikanta: We still need to decide which database to use.
+Someone: Maybe we should use PostgreSQL.
+Okay, let's use PostgreSQL.

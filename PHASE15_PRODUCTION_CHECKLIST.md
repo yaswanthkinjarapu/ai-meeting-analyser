@@ -1,0 +1,23 @@
+# Phase 15 — Production Deployment Checklist
+
+- [x] Production secrets configured & validation guard enforced (`backend/app/core/config.py`)
+- [x] PostgreSQL connection pooling & database session configured (`backend/app/database/session.py`)
+- [x] Alembic migration system configured (`alembic.ini`, `alembic/env.py`, `alembic/versions/001_initial_schema.py`)
+- [x] SQLite to PostgreSQL data migration script created (`scripts/migrate_sqlite_to_postgres.py`)
+- [x] Persistent file storage provider abstraction created (`backend/app/services/storage.py`)
+- [x] Configurable file upload limits enforced (`settings.MAX_UPLOAD_SIZE_MB`)
+- [x] FFmpeg installed and verified in backend container environment
+- [x] Production CORS restricted via environment variables
+- [x] HTTP Security response headers applied (`X-Content-Type-Options`, `X-Frame-Options`, `X-XSS-Protection`, `Referrer-Policy`)
+- [x] Liveness health endpoint implemented (`GET /health`)
+- [x] Database readiness probe implemented (`GET /ready`)
+- [x] Production Dockerfile created with FFmpeg & non-root user (`Dockerfile`)
+- [x] Production Frontend Dockerfile created (`Dockerfile.frontend`)
+- [x] Nginx reverse proxy configuration created (`nginx.conf`)
+- [x] Multi-container Docker Compose configuration created (`docker-compose.yml`)
+- [x] Automated Production Smoke Test Script created (`scripts/production_smoke_test.py`)
+- [x] Production Deployment Documentation created (`docs/PRODUCTION_DEPLOYMENT.md`)
+- [x] Backup & Restore Documentation created (`docs/BACKUP_AND_RESTORE.md`)
+- [x] Rollback Strategy Documentation created (`docs/ROLLBACK.md`)
+- [x] All 20 Phase 1–12 regression unit tests passing 100%
+- [x] Production React frontend build passing with 0 errors (`npm run build`)

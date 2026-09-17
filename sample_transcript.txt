@@ -1,0 +1,5 @@
+Speaker 1: Hi everyone, let's discuss our database migration plan.
+Speaker 2: Maybe we should use PostgreSQL.
+Speaker 1: Okay, let's use PostgreSQL for our production backend.
+Speaker 2: I will finish the API integration by Friday.
+Speaker 1: Great, someone should prepare the presentation for the team meeting next week.

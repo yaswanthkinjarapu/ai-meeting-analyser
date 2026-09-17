@@ -1,0 +1,75 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: meeting_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: meeting_db
+      POSTGRES_USER: meeting_user
+      POSTGRES_PASSWORD: meeting_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U meeting_user -d meeting_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: meeting_redis
+    restart: always
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: meeting_backend
+    restart: always
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      APP_ENV: production
+      SECRET_KEY: production_secret_key_change_in_real_deploy_32_chars
+      DATABASE_URL: postgresql+psycopg://meeting_user:meeting_password@postgres:5432/meeting_db
+      REDIS_URL: redis://redis:6379/0
+      CORS_ORIGINS: http://localhost,https://localhost,http://127.0.0.1
+      MAX_UPLOAD_SIZE_MB: 500
+      STORAGE_PROVIDER: local
+    volumes:
+      - backend_uploads:/app/backend/uploads
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.frontend
+    container_name: meeting_frontend
+    restart: always
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "80:80"
+
+volumes:
+  postgres_data:
+  backend_uploads:

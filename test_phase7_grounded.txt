@@ -1,0 +1,7 @@
+Harinath: We need to complete the API architecture.
+Prabu: I will finish the API by Friday.
+Manikanta: What database should we use for production?
+Someone: Maybe we should use PostgreSQL.
+Harinath: Okay, let's use PostgreSQL.
+Manikanta: Someone should prepare the project report.
+Prabu: We will finish the documentation soon.

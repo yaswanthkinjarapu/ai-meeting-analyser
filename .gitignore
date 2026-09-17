@@ -1,0 +1,35 @@
+# Python & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+*.sqlite3
+
+# Database & Data
+data/
+*.db
+
+# Uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Environment variables
+.env
+
+# Node & Frontend
+node_modules/
+dist/
+.vite/
+*.log
+
+# System & OS
+.DS_Store
+Thumbs.db
+
+# Test media files
+*.mp4
+*.wav
+*.mp3
+*.m4a
