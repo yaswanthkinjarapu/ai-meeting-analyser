@@ -41,7 +41,7 @@ RUN mkdir -p /app/backend/uploads /app/data \
     && chmod -R 777 /app/backend/uploads /app/data
 USER appuser
 
-EXPOSE 8000
+EXPOSE 10000
 
 # Production startup command using Uvicorn
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-10000} --workers 4"]
