@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from typing import List
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # Root directory of backend (c:\Users\yaswa\OneDrive\Desktop\meeting\backend)
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -63,9 +63,10 @@ class Settings(BaseSettings):
     # Task Queue / Redis
     REDIS_URL: str = os.getenv("REDIS_URL", "redis://localhost:6379/0")
 
-    class Config:
-        env_file = ".env"
-        extra = "ignore"
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        extra="ignore",
+    )
 
     def validate_production_config(self):
         """
